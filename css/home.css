@@ -1,0 +1,33 @@
+* {
+  border: none;
+}
+body {
+  background-color: rgb(247, 241, 247) !important;
+}
+
+.dashboard {
+}
+
+/* css part of sidebar  start*/
+
+.dashboard-sidebar {
+  background-color: #fff;
+  width: 17%;
+  height: 780px;
+  padding: 40px 20px;
+}
+.dashboard-name {
+  font-size: 31px;
+  font-weight: 500;
+}
+
+/* css part of sidebar end */
+
+/* css part of dashboard body start*/
+
+.dashboard-body {
+}
+.account {
+  right: 0;
+}
+/* css part of dashboard body end*/
