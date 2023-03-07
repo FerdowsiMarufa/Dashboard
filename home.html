@@ -17,27 +17,27 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <title>Dashboard</title>
   </head>
   <body>
     <div class="d-flex">
       <div class="dashboard-sidebar">
         <span class="dashboard-name">NDE Dashboard</span>
-        <div class="sidebar-content">
-          <button class="accordion">
+        <div id="side-parent" class="sidebar-content">
+          <!-- <button class="accordion">
             <span
               ><i class="fa-solid fa-check-to-slot icon-accordion"></i
               ><span class="menu-approval test-menu0">Approval</span></span
             ><i class="fa-solid fa-angle-down icon-down"></i>
           </button>
-          <div class="panel approval-panel">
-            <!-- <p><a href="">Approval 1</a></p>
+          <div class="panel">
+           <p><a href="">Approval 1</a></p>
             <p><a href="">Approval 2</a></p>
             <p><a href="">Approval 3</a></p> -->
-          </div>
+          <!-- </div> -->
 
-          <button class="accordion">
+          <!-- <button class="accordion">
             <span
               ><i class="fa-solid fa-file icon-accordion"></i>
               <span class="report-menu test-menu3"></span></span
@@ -45,7 +45,7 @@
           </button>
           <div class="panel report-panel">
             <p></p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="dashboard-body">
@@ -56,7 +56,7 @@
             <div>
               <div class="user-info">
                 <span class="user-name">Ferdowsi Marufa</span>
-                <span class="user-desig">ksjrgeriop</span>
+                <span class="user-desig">Intern</span>
               </div>
               <div class="login-list">
                 <p>My Profile</p>
@@ -72,10 +72,14 @@
           <div class="container">
             <div class="row justify-content-between">
               <div class="col-md-8 chart" style="width: 63%">
-                <canvas
+                <!-- <canvas
                   id="myChart"
                   style="width: 100%; max-width: 600px"
-                ></canvas>
+                ></canvas> -->
+                <div
+                  id="chart"
+                  style="width: 100%; max-width: 600px; height: 400px"
+                ></div>
               </div>
 
               <div class="col-md-4 task-value" style="width: 34%">

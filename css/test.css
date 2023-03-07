@@ -59,9 +59,9 @@ body {
   background-color: #e0d9e2;
   border-radius: 10px;
 }
-.accordion:hover .panel {
+/* .accordion:hover .panel {
   display: block;
-}
+} */
 .icon-accordion {
   color: #9b7baa;
   margin-right: 5px;

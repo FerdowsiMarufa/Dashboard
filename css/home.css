@@ -26,6 +26,8 @@ body {
 .dashboard-name {
   font-size: 31px;
   font-weight: 500;
+  color: #9d8ba5;
+  margin-bottom: 10px;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
@@ -84,7 +86,7 @@ body {
   color: #5f2f74;
 }
 .panel a:hover {
-  color: #5f2f74;
+  color: #401b50;
 }
 
 /* css part of sidebar end */
@@ -209,4 +211,138 @@ body {
 
 .approval-name {
   color: #754d86;
+}
+
+/* chart */
+
+html,
+body {
+  font-family: Consolas, monaco, monospace;
+}
+
+#chart {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  height: 320px;
+}
+
+.charttitle {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.bars td {
+  vertical-align: bottom;
+}
+
+.bars div:hover {
+  opacity: 0.6;
+}
+
+.legend {
+  vertical-align: bottom;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.legbox {
+  display: block;
+  clear: both;
+}
+
+.xaxisname {
+  margin: 5px;
+  color: #fff;
+  font-size: 77%;
+  padding: 5px;
+  float: left;
+}
+
+/*Flat UI colors*/
+
+.one {
+  background: #c9bbcf;
+}
+
+.two {
+  background: #b4e4ff;
+}
+
+.three {
+  background: #ffadad;
+}
+
+.four {
+  background: #d1aabf;
+}
+
+.five {
+  background: #ffe9ae;
+}
+
+.six {
+  background: #b69ac2;
+}
+
+.seven {
+  background: #e0abd4;
+}
+
+.eight {
+  background: #a0bedb;
+}
+
+.nine {
+  background: #e2a3a3;
+}
+
+.ten {
+  background: #22313f;
+}
+
+.eleven {
+  background: #f1c40f;
+}
+
+.twelve {
+  background: #f39c12;
+}
+
+.thirteen {
+  background: #e67e22;
+}
+
+.fourteen {
+  background: #d35400;
+}
+
+.fifteen {
+  background: #e74c3c;
+}
+
+.sixteen {
+  background: #c0392b;
+}
+
+.seventeen {
+  background: #ecf0f1;
+}
+
+.seventeen.clouds {
+  color: #bdc3c7;
+}
+
+.eighteen {
+  background: #bdc3c7;
+}
+
+.nineteen {
+  background: #95a5a6;
+}
+
+.twenty {
+  background: #7f8c8d;
 }
