@@ -59,6 +59,9 @@ body {
   background-color: #e0d9e2;
   border-radius: 10px;
 }
+.accordion:hover .panel {
+  display: block;
+}
 .icon-accordion {
   color: #9b7baa;
   margin-right: 5px;
@@ -181,8 +184,8 @@ body {
   justify-content: center;
   background-color: rgb(255, 255, 255);
   /* margin: 20px;
-  border-radius: 10px; 
-  /* width: 50% !important; */
+    border-radius: 10px; 
+    /* width: 50% !important; */
   border-radius: 10px;
 }
 .chart2 {

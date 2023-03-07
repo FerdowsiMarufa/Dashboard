@@ -41,33 +41,61 @@
 // });
 
 const dataArray = [];
-fetch("https://localhost:7160/GetAllMenuList")
+fetch("http://localhost:81/GetAllMenuList")
   .then((response) => response.json())
   .then((data) => {
     // Initialize the array
     console.log(data);
     // Loop through the data and create objects
-    // data.forEach((item) => {
-    //   const obj = {};
-    //   obj.name = item.name;
-    //   obj.value = item.value;
-    //   obj.color = item.color;
+    data.forEach((item) => {
+      const obj = {};
+      obj.menuId = item.menu_ID;
+      obj.menuName = item.menu_Name;
+      obj.parentID = item.parent_ID;
+      obj.pageName = item.page_Name;
 
-    //   dataArray.push(obj);
-    // });
-
-    // Print the array
-    // console.log(dataArray);
+      dataArray.push(obj);
+    });
     // done();
-    // [{name: "John", age: 30, city: "New York"}, {name: "Jane", age: 25, city: "San Francisco"}]
+    displaydata();
+    // document.querySelector(".menu-approval").innerHTML = dataArray[0].menuName;
+    // document.querySelector(".report-menu").innerHTML = dataArray[3].menuName;
   });
+// let sp = document.createElement("p");
+let approvalPanel = document.querySelector(".approval-panel");
+let reportPanel = document.querySelector(".report-panel");
+function displaydata() {
+  for (let j = 0; j <= dataArray.length; j++) {
+    if (j < 3) {
+      if (dataArray[j].menuId != dataArray[j].parentID) {
+        let sp = document.createElement("p");
+        sp.innerText = dataArray[j].menuName;
+        console.log(sp.innerText);
+        approvalPanel.appendChild(sp);
+      }
+    } else {
+      if (dataArray[j].menuId != dataArray[j].parentID) {
+        let sp = document.createElement("p");
+        sp.innerText = dataArray[j].menuName;
+        console.log(sp.innerText);
+        reportPanel.appendChild(sp);
+      }
+    }
+    if (dataArray[j].menuId == dataArray[j].parentID)
+      document.querySelector(".test-menu" + j).innerText =
+        dataArray[j].menuName;
+  }
+  document.querySelector(".menu-approval").innerText = dataArray[0].menuName;
+  document.querySelector(".report-menu").innerHTML = dataArray[3].menuName;
+}
 
 function done() {
-  console.log("marufa2");
   for (let i = 0; i < dataArray.length; i++) {
-    console.log(dataArray[i].name);
+    console.log(dataArray[i].pageName);
   }
 }
+
+// document.querySelector(".menu-approval").innerHTML = dataArray[0].pageName;
 
 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 var yValues = [55, 49, 44, 24, 18];
@@ -106,8 +134,10 @@ for (i = 0; i < acc.length; i++) {
     /* Toggle between hiding and showing the active panel */
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
+      console.log("NONE");
       panel.style.display = "none";
     } else {
+      console.log("block");
       panel.style.display = "block";
     }
   });
