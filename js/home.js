@@ -49,15 +49,20 @@ function displaydata() {
         if (dataArray[j].parentID == dataArray[i].menuId) {
           let p = document.createElement("p");
 
-          let a = document.createElement("a");
-          a.innerText = dataArray[j].menuName;
-          p.appendChild(a);
+          // let a = document.createElement("a");
+          // a.innerText = dataArray[j].menuName;
+          // p.appendChild(a);
+          p.innerText = dataArray[j].menuName;
+          // p.addEventListener("click", testfunction);
+          p.onclick = testfunction;
+          // p.onclick = testfunction();
           child_div.appendChild(p);
         }
       }
       side_parent.appendChild(child_div);
     }
   }
+
   console.log(side_parent);
   var acc = document.getElementsByClassName("accordion");
   var i;
@@ -81,8 +86,79 @@ function displaydata() {
     });
   }
 }
+function testfunction() {
+  document.querySelector(".home-page").style.display = "none";
+  document.querySelector(".menu-page-header").style.display = "block";
+}
 
-// chart using vanilla js
+// display  user data
+
+const pendingData = [];
+fetch("http://localhost:85/api/HrmLeave/GetAllPending")
+  .then((response) => response.json())
+  .then((data) => {
+    // Initialize the array
+
+    // Loop through the data and create objects
+    data.forEach((item) => {
+      const obj = {};
+      obj.employeeId = item.employeeId;
+      obj.leaveTypeCode = item.leaveTypeCode;
+      obj.leaveApplyDate = item.leaveApplyDate;
+      obj.leaveFromDate = item.leaveFromDate;
+      obj.leaveProcessStatus = item.leaveProcessStatus;
+      obj.leaveToDate = item.leaveToDate;
+      obj.leaveDaysNo = item.leaveDaysNo;
+
+      pendingData.push(obj);
+    });
+    console.log(pendingData);
+    displayPendingData();
+  });
+
+// display data in new page
+function displayPendingData() {
+  newApprovalContainer = document.querySelector(".new-containner");
+  console.log(newApprovalContainer);
+  for (let i = 0; i < pendingData.length; i++) {
+    newApprovalContainer.innerHTML +=
+      `<div class="row text-center">
+<div class="col-1">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    value=""
+    id="flexCheckDefault"
+  />
+</div>
+<div class="col">` +
+      pendingData[i].employeeId +
+      `</div>
+<div class="col">` +
+      pendingData[i].leaveTypeCode +
+      `</div>
+<div class="col">` +
+      pendingData[i].leaveApplyDate +
+      `</div>
+<div class="col">` +
+      pendingData[i].leaveFromDate +
+      `</div>
+<div class="col">` +
+      pendingData[i].leaveToDate +
+      `</div>
+<div class="col">` +
+      pendingData[i].leaveDaysNo +
+      `</div>
+<div class="col individual-select-item">
+  <i class="fa-solid fa-xmark cross"></i>
+  <i class="fa-solid fa-check select"></i>
+</div>
+</div>
+`;
+  }
+}
+
+// display data in new page
 
 //chart data
 var chartjson = {
@@ -255,3 +331,176 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+// [
+//   {
+//     "employeeId": 971,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:22 PM",
+//     "leaveFromDate": "12/22/2016 12:00:00 AM",
+//     "leaveToDate": "12/22/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 55,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/10/2016 12:21:50 PM",
+//     "leaveFromDate": "10/3/2016 12:00:00 AM",
+//     "leaveToDate": "10/3/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "DisApproved"
+//   },
+//   {
+//     "employeeId": 55,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:22 PM",
+//     "leaveFromDate": "12/22/2016 12:00:00 AM",
+//     "leaveToDate": "12/22/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "DisApproved"
+//   },
+//   {
+//     "employeeId": 957,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/10/2016 12:22:03 PM",
+//     "leaveFromDate": "10/6/2016 12:00:00 AM",
+//     "leaveToDate": "10/6/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 987,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:22 PM",
+//     "leaveFromDate": "12/22/2016 12:00:00 AM",
+//     "leaveToDate": "12/22/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 889,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/10/2016 12:22:15 PM",
+//     "leaveFromDate": "10/9/2016 12:00:00 AM",
+//     "leaveToDate": "10/9/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 844,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/9/2016 11:21:53 AM",
+//     "leaveFromDate": "10/10/2016 12:00:00 AM",
+//     "leaveToDate": "10/12/2016 12:00:00 AM",
+//     "leaveDaysNo": 3,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 189,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:22 PM",
+//     "leaveFromDate": "12/22/2016 12:00:00 AM",
+//     "leaveToDate": "12/22/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 988,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:51 PM",
+//     "leaveFromDate": "12/20/2016 12:00:00 AM",
+//     "leaveToDate": "12/20/2016 12:00:00 AM",
+//     "leaveDaysNo": 1,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 957,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/19/2016 5:32:13 PM",
+//     "leaveFromDate": "10/13/2016 12:00:00 AM",
+//     "leaveToDate": "10/13/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 39,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/19/2016 5:32:19 PM",
+//     "leaveFromDate": "10/15/2016 12:00:00 AM",
+//     "leaveToDate": "10/15/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Pending"
+//   },
+//   {
+//     "employeeId": 989,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:51 PM",
+//     "leaveFromDate": "12/20/2016 12:00:00 AM",
+//     "leaveToDate": "12/20/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 990,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "12/26/2016 5:48:51 PM",
+//     "leaveFromDate": "12/20/2016 12:00:00 AM",
+//     "leaveToDate": "12/20/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 46,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "10/25/2016 1:56:12 PM",
+//     "leaveFromDate": "10/6/2016 12:00:00 AM",
+//     "leaveToDate": "10/6/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 38,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/2/2016 4:49:35 PM",
+//     "leaveFromDate": "10/31/2016 12:00:00 AM",
+//     "leaveToDate": "10/31/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 951,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/3/2016 10:07:43 AM",
+//     "leaveFromDate": "10/27/2016 12:00:00 AM",
+//     "leaveToDate": "10/27/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 959,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/3/2016 10:07:43 AM",
+//     "leaveFromDate": "10/27/2016 12:00:00 AM",
+//     "leaveToDate": "10/27/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 887,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/3/2016 10:07:48 AM",
+//     "leaveFromDate": "10/29/2016 12:00:00 AM",
+//     "leaveToDate": "10/29/2016 12:00:00 AM",
+//     "leaveDaysNo": 1,
+//     "leaveProcessStatus": "Approved"
+//   },
+//   {
+//     "employeeId": 39,
+//     "leaveTypeCode": "LT-0001",
+//     "leaveApplyDate": "11/7/2016 9:26:15 AM",
+//     "leaveFromDate": "10/24/2016 12:00:00 AM",
+//     "leaveToDate": "10/24/2016 12:00:00 AM",
+//     "leaveDaysNo": 0.5,
+//     "leaveProcessStatus": "Pending"
+//   },

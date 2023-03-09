@@ -1,5 +1,5 @@
 * {
-  /* border: none !important; */
+  border: none;
 }
 
 :root {
@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: rgb(247, 241, 247) !important;
+  background-color: rgb(249 247 249) !important;
 }
 
 .dashboard {
@@ -48,7 +48,7 @@ body {
   background-color: #c9bbcf;
   border-radius: 10px;
 }
-.active i {
+.active .icon-down {
   transform: rotate(-180deg);
 }
 
@@ -80,12 +80,12 @@ body {
   overflow: hidden;
   margin-left: 20px;
 }
-.panel a {
-  text-decoration: none;
+.panel p {
+  /* text-decoration: none; */
   cursor: pointer;
-  color: #5f2f74;
+  color: #6a616e;
 }
-.panel a:hover {
+.panel p:hover {
   color: #401b50;
 }
 
@@ -168,6 +168,7 @@ body {
 .dictoctory-dashboard {
   font-size: 28px;
   color: var(--main-color);
+  /* margin-bottom: 10px; */
 }
 .row {
   width: 100%;
@@ -224,9 +225,11 @@ body {
   padding: 20px;
 }
 
-table {
+#chart table {
+  text-align: center;
   width: 100%;
   height: 320px;
+  margin-left: 20px;
 }
 
 .charttitle {
@@ -345,4 +348,63 @@ table {
 
 .twenty {
   background: #7f8c8d;
+}
+
+/*individual menu-page */
+
+.menu-page-header {
+  /* display: none; */
+}
+
+.menu-new-page .row {
+}
+
+.individual-select-item i {
+  padding: 4px;
+  margin: 0 5px;
+}
+.button-div {
+  text-align: end;
+}
+.selectall-button {
+  background-color: #ecc07d;
+  padding: 4px 6px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+.approve-button {
+  background-color: #a0bedb;
+  padding: 5px 7px;
+  border-radius: 4px;
+}
+
+.reject-button {
+  background-color: #dba0a0;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+/* menu new page */
+
+.menu-approved-page .row {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 6px !important;
+  height: 70px;
+  border-bottom: 1px solid rgb(163, 162, 162);
+  background-color: #e5ecee;
+  /* height: 0 !important; */
+}
+
+.new-containner {
+  height: 500px;
+  overflow: scroll;
+}
+
+.cross {
+  color: #e83535;
+}
+.select {
+  color: #31a731;
 }
