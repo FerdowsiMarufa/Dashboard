@@ -366,6 +366,9 @@ body {
 .button-div {
   text-align: end;
 }
+.selectall-button-div{
+   width: 80%;
+}
 .selectall-button {
   background-color: #ecc07d;
   padding: 4px 6px;
