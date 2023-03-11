@@ -1,14 +1,12 @@
 // display  user data
-
 // …
-const pendingData = [];
 pending();
 function pending() {
+  let pendingData = [];
   document.getElementById("new-page").style.display = "block";
   document.getElementById("approved-page").style.display = "none";
   document.getElementById("reject-page").style.display = "none";
-  console.log("check");
-  fetch("http://localhost:85/api/HrmLeave/GetAllPending")
+  fetch("http://localhost:82/api/HrmLeave/GetAllPending")
     .then((response) => response.json())
     .then((data) => {
       // Initialize the array
@@ -25,24 +23,31 @@ function pending() {
         obj.ApplicationId = item.applicationId;
         pendingData.push(obj);
       });
-      console.log(pendingData);
       displayPendingData();
     });
-
   // display data in new page
   function displayPendingData() {
     newApprovalContainer = document.querySelector(".new-containner");
     // console.log(newApprovalContainer);
+    newApprovalContainer.innerHTML = `
+    <div class="row ">
+    <div class="col fw-bold">Employee Id</div>
+    <div class="col fw-bold">Leave type Code</div>
+    <div class="col fw-bold">Leave apply date</div>
+    <div class="col fw-bold">Leave from Date</div>
+    <div class="col fw-bold">Leave to Date</div>
+    <div class="col fw-bold">Leaves Day Number</div>
+  </div>
+    `;
     for (let i = 0; i < pendingData.length; i++) {
       newApprovalContainer.innerHTML +=
-        `<div class="row text-center">
+        `
+        <div class="row text-center">
 <div class="col-1">
   <input
     class="form-check-input"
     type="checkbox"
-    value=""
- 
-    onclick="checkFunction(\'' + pendingData[i].ApplicationId + '\')"
+    onclick="checkFunction(${pendingData[i].ApplicationId})"
     id="flexCheckDefault"
   />
 </div>
@@ -73,9 +78,7 @@ function pending() {
     }
   }
 }
-
 // onclick function of check box
-
 // display data in Approved Page
 function Approved() {
   document.getElementById("new-page").style.display = "none";
@@ -83,7 +86,7 @@ function Approved() {
   document.getElementById("reject-page").style.display = "none";
   // data load from Api
   const ApprovedData = [];
-  fetch("http://localhost:85/api/HrmLeave/GetAllApproved")
+  fetch("http://localhost:82/api/HrmLeave/GetAllApproved")
     .then((response) => response.json())
     .then((data) => {
       // Initialize the array
@@ -106,6 +109,16 @@ function Approved() {
   function displayApprovedData() {
     // document.getElementById("approved-page").style.display='block';
     ApprovedContainer = document.querySelector(".approve-containner");
+    ApprovedContainer.innerHTML = `
+    <div class="row">
+    <div class="col fw-bold">Employee Id</div>
+    <div class="col fw-bold">Leave type Code</div>
+    <div class="col fw-bold">Leave apply date</div>
+    <div class="col fw-bold">Leave from Date</div>
+    <div class="col fw-bold">Leave to Date</div>
+    <div class="col fw-bold">Leaves Day Number</div>
+  </div>
+    `;
     for (let i = 0; i < ApprovedData.length; i++) {
       ApprovedContainer.innerHTML +=
         `<div class="row text-center">
@@ -139,7 +152,7 @@ function Rejected() {
   document.getElementById("reject-page").style.display = "block";
   // data load from Api
   const DisApprovedData = [];
-  fetch("http://localhost:85/api/HrmLeave/GetAllDisApproved")
+  fetch("http://localhost:82/api/HrmLeave/GetAllDisApproved")
     .then((response) => response.json())
     .then((data) => {
       // Initialize the array
@@ -162,6 +175,16 @@ function Rejected() {
   function displayDisApprovedData() {
     // document.getElementById("approved-page").style.display='block';
     DisApprovedContainer = document.querySelector(".Disapprove-containner");
+    DisApprovedContainer.innerHTML = `
+    <div class="row">
+    <div class="col fw-bold">Employee Id</div>
+    <div class="col fw-bold">Leave type Code</div>
+    <div class="col fw-bold">Leave apply date</div>
+    <div class="col fw-bold">Leave from Date</div>
+    <div class="col fw-bold">Leave to Date</div>
+    <div class="col fw-bold">Leaves Day Number</div>
+  </div>
+    `;
     for (let i = 0; i < DisApprovedData.length; i++) {
       DisApprovedContainer.innerHTML +=
         `<div class="row text-center">
@@ -188,37 +211,58 @@ function Rejected() {
     }
   }
 }
-
 // // onclick function of check box
-const clickedID = [];
-
-function checkFunction() {
-  console.log(pendingData[i].ApplicationId);
-  clickedID.push(pendingData[i].ApplicationId);
+let clickedID = [];
+function checkFunction(value) {
+  clickedID.push(value);
 }
-
-// approve all button
-function approveAll() {
+function rejectAll() {
   if (clickedID.length) {
     console.log(clickedID);
     for (let i = 0; i < clickedID.length; i++) {
-      var data = {
-        id: clickedID[i],
-        value: "Approved",
-      };
-      fetch("http://localhost:85/api/UpdateStatus/{id}", {
-        method: "POST",
+      const id = clickedID[i]; // Replace with the ID of the resource you want to update
+      const value = "DisApproved"; // Replace with the value you want to set for the LeaveProcessStatus
+      fetch(`http://localhost:82/api/HrmLeave/UpdateStatus/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(value),
       })
         .then((response) => {
-          console.log("Data posted successfully");
+          console.log(response);
         })
         .catch((error) => {
-          console.error("Error posting data:", error);
+          console.error("Error:", error);
         });
     }
+    clickedID.length = 0;
+    location.reload();
+  }
+}
+// approve all button
+function approveAll() {
+  // console.log(clickedID.length);
+  if (clickedID.length) {
+    console.log(clickedID);
+    for (let i = 0; i < clickedID.length; i++) {
+      const id = clickedID[i]; // Replace with the ID of the resource you want to update
+      const value = "Approved"; // Replace with the value you want to set for the LeaveProcessStatus
+      fetch(`http://localhost:82/api/HrmLeave/UpdateStatus/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+    clickedID.length = 0;
+    location.reload();
   }
 }

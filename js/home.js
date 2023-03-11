@@ -1,5 +1,5 @@
 const dataArray = [];
-fetch("http://localhost:81/GetAllMenuList")
+fetch("http://localhost:82/GetAllMenuList")
   .then((response) => response.json())
   .then((data) => {
     // Initialize the array

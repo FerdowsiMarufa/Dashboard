@@ -21,7 +21,7 @@
   </head>
   <body>
     <div class="d-flex">
-      <div class="dashboard-sidebar">
+      <div class="dashboard-sidebar ">
         <span class="dashboard-name">NDE Dashboard</span>
         <div id="side-parent" class="sidebar-content">
           <!-- <button class="accordion">
@@ -170,18 +170,18 @@
           <hr />
         </div>
         <!-- new page -->
-        <div id="new-page" class="menu-new-page">
-          <button type="button" class="selectall-button mt-4">SelectAll</button>
-          <div class="menu-approved-page mb-4 px-4">
+        <div id="new-page" class="menu-new-page h-100" >
+         
+          <div class="menu-approved-page mb-4  ">
             <div class="container new-containner">
-              <div class="row sticky">
-                <div class="col-1 fw-bold"></div>
+              <div class="row   row-1st">
+                <div class="col-1 fw-bold"> <button type="button" class="selectall-button  ">SelectAll</button></div>
                 <div class="col fw-bold">Employee Id</div>
                 <div class="col fw-bold">Leave type Code</div>
                 <div class="col fw-bold">Leave apply date</div>
                 <div class="col fw-bold">Leave form Date</div>
                 <div class="col fw-bold">Leave to Date</div>
-                <div class="col fw-bold">leaves Day Number</div>
+                <div class="col-auto fw-bold">leaves Day Number</div>
                 <div class="col fw-bold"></div>
               </div>
               <!-- js -->
@@ -195,9 +195,9 @@
           </div>
         </div>
         <!-- approved page -->
-        <div id="approved-page" class="menu-approved-page mt-5  ">
-          <div class="container approve-containner">
-            <div class="row">
+        <div id="approved-page" class="menu-approved-page mt-5 h-100 ">
+          <div class="container approve-containner new-containner">
+            <div class="row row-1st">
               <div class="col fw-bold">Employee Id</div>
               <div class="col fw-bold">Leave type Code</div>
               <div class="col fw-bold">Leave apply date</div>
@@ -236,9 +236,9 @@
         </div>
         <!-- approved page end -->
         <!-- reject page -->
-        <div id="reject-page" class="menu-approved-page mt-5 px-4">
-          <div class="container Disapprove-containner">
-            <div class="row">
+        <div id="reject-page" class="menu-approved-page mt-5  ">
+          <div class="container Disapprove-containner new-containner">
+            <div class="row row-1st">
               <div class="col fw-bold">Employee Id</div>
               <div class="col fw-bold">Leave type Code</div>
               <div class="col fw-bold">Leave apply date</div>
