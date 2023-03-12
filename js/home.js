@@ -1,9 +1,9 @@
 const dataArray = [];
-fetch("http://localhost:81/GetAllMenuList")
+fetch("http://localhost:82/GetAllMenuList")
   .then((response) => response.json())
   .then((data) => {
     // Initialize the array
-    console.log(data);
+    // console.log(data);
     // Loop through the data and create objects
     data.forEach((item) => {
       const obj = {};
@@ -63,12 +63,13 @@ function displaydata() {
     }
   }
 
-  console.log(side_parent);
+  // console.log(side_parent);
   var acc = document.getElementsByClassName("accordion");
   var i;
+  console.log(acc.length);
 
   for (i = 0; i < acc.length; i++) {
-    console.log(i);
+    // console.log(i);
     acc[i].addEventListener("click", function () {
       /* Toggle between adding and removing the "active" class,
     to highlight the button that controls the panel */
@@ -92,73 +93,149 @@ function testfunction() {
 }
 
 // display  user data
+//pending();
+// function pending() {
+//   const pendingData = [];
+//   fetch("http://localhost:82/api/HrmLeave/GetAllPending")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // Initialize the array
+//       // Loop through the data and create objects
+//       data.forEach((item) => {
+//         const obj = {};
+//         obj.employeeId = item.employeeId;
+//         obj.leaveTypeCode = item.leaveTypeCode;
+//         obj.leaveApplyDate = item.leaveApplyDate;
+//         obj.leaveFromDate = item.leaveFromDate;
+//         obj.leaveProcessStatus = item.leaveProcessStatus;
+//         obj.leaveToDate = item.leaveToDate;
+//         obj.leaveDaysNo = item.leaveDaysNo;
+//         pendingData.push(obj);
+//       });
+//       console.log(pendingData);
+//       displayPendingData();
+//     });
+//   // display data in new page
+//   function displayPendingData() {
+//     document.getElementById("new-page").style.display = "block";
+//     document.getElementById("approved-page").style.display = "none";
+//     document.getElementById("reject-page").style.display = "none";
+//     newApprovalContainer = document.querySelector(".new-containner");
+//     console.log(newApprovalContainer);
+//     for (let i = 0; i < pendingData.length; i++) {
+//       newApprovalContainer.innerHTML +=
+//         `<div class="row text-center">
+// <div class="col-1">
+//   <input
+//     class="form-check-input"
+//     type="checkbox"
+//     value=""
+//     onclick=
+//     id="flexCheckDefault"
+//   />
+// </div>
+// <div class="col">` +
+//         pendingData[i].employeeId +
+//         `</div>
+// <div class="col">` +
+//         pendingData[i].leaveTypeCode +
+//         `</div>
+// <div class="col">` +
+//         pendingData[i].leaveApplyDate +
+//         `</div>
+// <div class="col">` +
+//         pendingData[i].leaveFromDate +
+//         `</div>
+// <div class="col">` +
+//         pendingData[i].leaveToDate +
+//         `</div>
+// <div class="col">` +
+//         pendingData[i].leaveDaysNo +
+//         `</div>
+// <div class="col individual-select-item">
+// <i class="fa-solid fa-xmark cross"></i>
+// <i class="fa-solid fa-check select"></i>
+// </div>
+// </div>
+// `;
+//     }
+//   }
+// }
 
-const pendingData = [];
-fetch("http://localhost:85/api/HrmLeave/GetAllPending")
-  .then((response) => response.json())
-  .then((data) => {
-    // Initialize the array
+// const pendingData = [];
+// fetch("http://localhost:85/api/HrmLeave/GetAllPending")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     // Initialize the array
+//     console.log(data);
+//     // Loop through the data and create objects
+//     data.forEach((item) => {
+//       const obj = {};
+//       obj.employeeId = item.employeeId;
+//       obj.leaveTypeCode = item.leaveTypeCode;
+//       obj.leaveApplyDate = item.leaveApplyDate;
+//       obj.leaveFromDate = item.leaveFromDate;
+//       obj.leaveProcessStatus = item.leaveProcessStatus;
+//       obj.leaveToDate = item.leaveToDate;
+//       obj.leaveDaysNo = item.leaveDaysNo;
+//       obj.ApplicationId = item.applicationId;
+//       console.log(item.applicationId);
+//       pendingData.push(obj);
+//     });
+//     console.log(pendingData);
+//     displayPendingData();
+//   });
 
-    // Loop through the data and create objects
-    data.forEach((item) => {
-      const obj = {};
-      obj.employeeId = item.employeeId;
-      obj.leaveTypeCode = item.leaveTypeCode;
-      obj.leaveApplyDate = item.leaveApplyDate;
-      obj.leaveFromDate = item.leaveFromDate;
-      obj.leaveProcessStatus = item.leaveProcessStatus;
-      obj.leaveToDate = item.leaveToDate;
-      obj.leaveDaysNo = item.leaveDaysNo;
+// // display data in new page
 
-      pendingData.push(obj);
-    });
-    console.log(pendingData);
-    displayPendingData();
-  });
+// function displayPendingData() {
+//   newApprovalContainer = document.querySelector(".new-containner");
+//   // console.log(newApprovalContainer);
+//   for (let i = 0; i < pendingData.length; i++) {
+//     newApprovalContainer.innerHTML +=
+//       `<div class="row text-center">
+// <div class="col-1">
+//   <input
+//     class="form-check-input check-box"
+//     type="checkbox"
+//     name="box"
+//     value=""
+//     onclick="checkFunction(\'' + pendingData[i].ApplicationId + '\')"
+//     id="flexCheckDefault"
+//   />
+// </div>
+// <div class="col">` +
+//       pendingData[i].employeeId +
+//       `</div>
+// <div class="col">` +
+//       pendingData[i].leaveTypeCode +
+//       `</div>
+// <div class="col">` +
+//       pendingData[i].leaveApplyDate +
+//       `</div>
+// <div class="col">` +
+//       pendingData[i].leaveFromDate +
+//       `</div>
+// <div class="col">` +
+//       pendingData[i].leaveToDate +
+//       `</div>
+// <div class="col">` +
+//       pendingData[i].leaveDaysNo +
+//       `</div>
+// <div class="col individual-select-item">
+//   <i class="fa-solid fa-xmark cross"></i>
+//   <i class="fa-solid fa-check select"></i>
+// </div>
+// </div>
+// `;
+//   }
+// }
 
-// display data in new page
-function displayPendingData() {
-  newApprovalContainer = document.querySelector(".new-containner");
-  console.log(newApprovalContainer);
-  for (let i = 0; i < pendingData.length; i++) {
-    newApprovalContainer.innerHTML +=
-      `<div class="row text-center">
-<div class="col-1">
-  <input
-    class="form-check-input"
-    type="checkbox"
-    value=""
-    id="flexCheckDefault"
-  />
-</div>
-<div class="col">` +
-      pendingData[i].employeeId +
-      `</div>
-<div class="col">` +
-      pendingData[i].leaveTypeCode +
-      `</div>
-<div class="col">` +
-      pendingData[i].leaveApplyDate +
-      `</div>
-<div class="col">` +
-      pendingData[i].leaveFromDate +
-      `</div>
-<div class="col">` +
-      pendingData[i].leaveToDate +
-      `</div>
-<div class="col">` +
-      pendingData[i].leaveDaysNo +
-      `</div>
-<div class="col individual-select-item">
-  <i class="fa-solid fa-xmark cross"></i>
-  <i class="fa-solid fa-check select"></i>
-</div>
-</div>
-`;
-  }
-}
-
-// display data in new page
+// // onclick function of check box
+// const clickedID = [];
+// function checkFunction() {
+//   console.log(pendingData[i].ApplicationId);
+// }
 
 //chart data
 var chartjson = {

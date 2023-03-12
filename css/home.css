@@ -3,13 +3,14 @@
 }
 
 :root {
-  --main-color: #754d86;
-  --second-color: #0a8bba;
+  --main-color: rgb(78 128 173);
+  --text-color: rgb(70, 128, 179);
+  --second-color: rgb(223, 233, 241);
   --x: #f4fcff;
 }
 
 body {
-  background-color: rgb(249 247 249) !important;
+  background-color: #f4fcff !important;
 }
 
 .dashboard {
@@ -22,11 +23,13 @@ body {
   width: 21%;
   height: 780px;
   padding: 35px 20px;
+  border-right: var(--second-color);
+  /* box-shadow: 0 0 15px var(--main-color); */
 }
 .dashboard-name {
   font-size: 31px;
   font-weight: 500;
-  color: #9d8ba5;
+  color: rgb(78 150 216);
   margin-bottom: 10px;
 }
 
@@ -45,7 +48,7 @@ body {
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active {
-  background-color: #c9bbcf;
+  background-color: var(--second-color);
   border-radius: 10px;
 }
 .active .icon-down {
@@ -58,11 +61,11 @@ body {
   color: var(--main-color);
 }
 .accordion:hover {
-  background-color: #e0d9e2;
+  background-color: var(--second-color);
   border-radius: 10px;
 }
 .icon-accordion {
-  color: #9b7baa;
+  color: var(--main-color);
   margin-right: 5px;
 }
 
@@ -83,10 +86,10 @@ body {
 .panel p {
   /* text-decoration: none; */
   cursor: pointer;
-  color: #6a616e;
+  color: var(--main-color);
 }
 .panel p:hover {
-  color: #401b50;
+  color: var(--main-color);
 }
 
 /* css part of sidebar end */
@@ -95,7 +98,27 @@ body {
 
 .dashboard-body {
   width: 100%;
+  /* margin: 25px; */
+}
+
+.menu-page-header {
+  padding: 30px;
+  border-bottom: 1px solid var(--second-color);
+  background-image: linear-gradient(
+    to right,
+
+    rgb(131, 210, 255),
+    rgb(200, 135, 243)
+  );
+}
+.home-page,
+.menu-approved-page {
   margin: 25px;
+}
+.radio-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .account {
   text-align: end;
@@ -107,10 +130,10 @@ body {
 }
 
 .account i {
-  color: #9b7baa;
+  color: #fff;
   padding: 5px 7px;
   font-size: 23px;
-  border: 1px solid #9b7baa;
+  border: 2px solid var(--second-color);
   border-radius: 50%;
   margin-right: 30px;
 }
@@ -142,7 +165,7 @@ body {
 }
 
 .user-info {
-  background-color: #dec5df;
+  background-color: rgb(224, 187, 248);
   padding: 28px;
   text-align: left;
 }
@@ -389,21 +412,38 @@ body {
 
 /* menu new page */
 
-.menu-approved-page .row {
+.menu-new-page .row,
+.new-containner .row,
+.menu-approved-page .row,
+.menu-reject-page .row {
   text-align: center;
   display: flex;
   align-items: center;
   padding: 6px !important;
 
   height: 70px;
-  border-bottom: 1px solid rgb(163, 162, 162);
-  background-color: #e5ecee;
+  border: 1px solid rgb(241, 235, 235);
+  /* background-color: rgb(243, 250, 255); */
   /* height: 0 !important; */
 }
+.new-containner .row-1st {
+  background-color: rgb(203, 217, 228);
+  position: fixed;
+}
 
-.new-containner {
-  height: 500px;
+/* .new-containner {
+  height: 50% !important;
   overflow: scroll;
+} */
+
+/* .menu-approved-page {
+  height: 600px !important;
+  overflow: scroll;
+} */
+.new-containner {
+  height: 600px !important;
+  overflow: scroll;
+  background-color: #fff;
 }
 
 .cross {
