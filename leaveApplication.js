@@ -1,8 +1,19 @@
+// const x = [1, 2, 3, 4, 5];
+// print(x);
+// function print(x) {
+//   console.log(x);
+//   x = [];
+//   console.log(x);
+// }
+
 // display  user data
 // …
+
+let selectedAllData = [];
 pending();
 function pending() {
   let pendingData = [];
+
   document.getElementById("new-page").style.display = "block";
   document.getElementById("approved-page").style.display = "none";
   document.getElementById("reject-page").style.display = "none";
@@ -13,6 +24,7 @@ function pending() {
       // Loop through the data and create objects
       data.forEach((item) => {
         const obj = {};
+        const selectAll = {};
         obj.employeeId = item.employeeId;
         obj.leaveTypeCode = item.leaveTypeCode;
         obj.leaveApplyDate = item.leaveApplyDate;
@@ -21,8 +33,11 @@ function pending() {
         obj.leaveToDate = item.leaveToDate;
         obj.leaveDaysNo = item.leaveDaysNo;
         obj.ApplicationId = item.applicationId;
+        selectAll.ApplicationId = item.applicationId;
         pendingData.push(obj);
+        selectedAllData.push(selectAll);
       });
+      console.log(selectedAllData);
       displayPendingData();
     });
   // display data in new page
@@ -30,28 +45,31 @@ function pending() {
     newApprovalContainer = document.querySelector(".new-containner");
     // console.log(newApprovalContainer);
     newApprovalContainer.innerHTML = `
-    <div class="row ">
-    <div class="col fw-bold">Employee Id</div>
+    <div class="row row-1st  "style="position: fixed; width: 76.5%" >
+    <div class="col-1 fw-bold"> <button type="button" onclick="SelectAllFunction()" class="selectall-button  ">SelectAll</button></div>
+    <div class="col-auto fw-bold">Employee Id</div>
     <div class="col fw-bold">Leave type Code</div>
     <div class="col fw-bold">Leave apply date</div>
     <div class="col fw-bold">Leave from Date</div>
     <div class="col fw-bold">Leave to Date</div>
-    <div class="col fw-bold">Leaves Day Number</div>
+    <div class="col-auto fw-bold">Leaves Day Number</div>
+    <div class="col fw-bold">Action</div>
   </div>
     `;
     for (let i = 0; i < pendingData.length; i++) {
       newApprovalContainer.innerHTML +=
         `
-        <div class="row text-center">
+        <div class="row text-center"  >
 <div class="col-1">
   <input
     class="form-check-input"
     type="checkbox"
+    name="box"
     onclick="checkFunction(${pendingData[i].ApplicationId})"
     id="flexCheckDefault"
   />
 </div>
-<div class="col">` +
+<div class="col-1">` +
         pendingData[i].employeeId +
         `</div>
 <div class="col">` +
@@ -70,8 +88,9 @@ function pending() {
         pendingData[i].leaveDaysNo +
         `</div>
 <div class="col individual-select-item">
-<i class="fa-solid fa-xmark cross"></i>
-<i class="fa-solid fa-check select"></i>
+<i class="fa-solid fa-xmark cross"
+onclick="crossFunction(${pendingData[i].ApplicationId})"></i>
+<i class="fa-solid fa-check select"onclick="selectFunction(${pendingData[i].ApplicationId})"></i>
 </div>
 </div>
 `;
@@ -109,16 +128,17 @@ function Approved() {
   function displayApprovedData() {
     // document.getElementById("approved-page").style.display='block';
     ApprovedContainer = document.querySelector(".approve-containner");
+
     ApprovedContainer.innerHTML = `
-    <div class="row">
-    <div class="col fw-bold">Employee Id</div>
-    <div class="col fw-bold">Leave type Code</div>
-    <div class="col fw-bold">Leave apply date</div>
-    <div class="col fw-bold">Leave from Date</div>
-    <div class="col fw-bold">Leave to Date</div>
-    <div class="col fw-bold">Leaves Day Number</div>
-  </div>
-    `;
+      <div class="row row-1st  "style="position: fixed; width: 76.5%" >
+      <div class="col fw-bold">Employee Id</div>
+      <div class="col fw-bold">Leave type Code</div>
+      <div class="col fw-bold">Leave apply date</div>
+      <div class="col fw-bold">Leave from Date</div>
+      <div class="col-auto fw-bold">Leave to Date</div>
+      <div class="col fw-bold">Leaves Day Number</div>
+    </div>
+      `;
     for (let i = 0; i < ApprovedData.length; i++) {
       ApprovedContainer.innerHTML +=
         `<div class="row text-center">
@@ -176,7 +196,7 @@ function Rejected() {
     // document.getElementById("approved-page").style.display='block';
     DisApprovedContainer = document.querySelector(".Disapprove-containner");
     DisApprovedContainer.innerHTML = `
-    <div class="row">
+    <div class="row row-1st  "style="position: fixed; width: 76.5%" >
     <div class="col fw-bold">Employee Id</div>
     <div class="col fw-bold">Leave type Code</div>
     <div class="col fw-bold">Leave apply date</div>
@@ -211,10 +231,40 @@ function Rejected() {
     }
   }
 }
+//onclick on allselect button
+
+function SelectAllFunction() {
+  var ele = document.getElementsByName("box");
+  // console.log(ele.length);
+  console.log(selectedAllData);
+  for (var i = 0; i < ele.length; i++) {
+    if (ele[i].type == "checkbox") {
+      ele[i].checked = true;
+    }
+  }
+
+  for (let i = 0; i < selectedAllData.length; i++) {
+    var x = selectedAllData[i].ApplicationId;
+    console.log("XXX:", x);
+    clickedID.push(x);
+  }
+  selectedAllData = [];
+  console.log("e :", selectedAllData);
+}
+
 // // onclick function of check box
 let clickedID = [];
 function checkFunction(value) {
   clickedID.push(value);
+}
+function crossFunction(value) {
+  clickedID.push(value);
+  rejectAll();
+}
+
+function selectFunction(value) {
+  clickedID.push(value);
+  approveAll();
 }
 function rejectAll() {
   if (clickedID.length) {
