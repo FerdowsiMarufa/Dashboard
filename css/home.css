@@ -1,3 +1,139 @@
+/* chart */
+
+html,
+body {
+  font-family: Consolas, monaco, monospace;
+}
+
+#chart {
+  padding: 20px;
+}
+
+#chart table {
+  text-align: center;
+  width: 100%;
+  height: 320px;
+  margin-left: 20px;
+}
+
+.charttitle {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.bars td {
+  vertical-align: bottom;
+}
+
+.bars div:hover {
+  opacity: 0.6;
+}
+
+.legend {
+  vertical-align: bottom;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.legbox {
+  display: block;
+  clear: both;
+}
+
+.xaxisname {
+  margin: 5px;
+  color: #fff;
+  font-size: 77%;
+  padding: 5px;
+  float: left;
+}
+
+/*Flat UI colors*/
+
+.one {
+  background: #c9bbcf;
+}
+
+.two {
+  background: #b4e4ff;
+}
+
+.three {
+  background: #ffadad;
+}
+
+.four {
+  background: #d1aabf;
+}
+
+.five {
+  background: #ffe9ae;
+}
+
+.six {
+  background: #b69ac2;
+}
+
+.seven {
+  background: #e0abd4;
+}
+
+.eight {
+  background: #a0bedb;
+}
+
+.nine {
+  background: #e2a3a3;
+}
+
+.ten {
+  background: #22313f;
+}
+
+.eleven {
+  background: #f1c40f;
+}
+
+.twelve {
+  background: #f39c12;
+}
+
+.thirteen {
+  background: #e67e22;
+}
+
+.fourteen {
+  background: #d35400;
+}
+
+.fifteen {
+  background: #e74c3c;
+}
+
+.sixteen {
+  background: #c0392b;
+}
+
+.seventeen {
+  background: #ecf0f1;
+}
+
+.seventeen.clouds {
+  color: #bdc3c7;
+}
+
+.eighteen {
+  background: #bdc3c7;
+}
+
+.nineteen {
+  background: #95a5a6;
+}
+
+.twenty {
+  background: #7f8c8d;
+}
+
 * {
   border: none;
 }
@@ -6,11 +142,16 @@
   --main-color: rgb(78 128 173);
   --text-color: rgb(70, 128, 179);
   --second-color: rgb(223, 233, 241);
+  --blue--: rgb(115, 186, 226);
+  --font--color: rgb(53, 160, 221);
+
+  --purple--: rgb(190, 127, 209);
   --x: #f4fcff;
 }
 
 body {
-  background-color: #f4fcff !important;
+  /* background-color: #f4fcff !important; */
+  background-color: #e8eff5 !important;
 }
 
 .dashboard {
@@ -29,14 +170,14 @@ body {
 .dashboard-name {
   font-size: 31px;
   font-weight: 500;
-  color: rgb(78 150 216);
+  color: rgb(115, 186, 226);
   margin-bottom: 10px;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   background-color: #fff;
-  color: #444;
+  color: #b3aaaa;
   cursor: pointer;
   padding: 15px;
   width: 100%;
@@ -58,15 +199,15 @@ body {
 .accordion {
   display: flex;
   justify-content: space-between;
-  color: var(--main-color);
+  color: var(--font--color);
 }
 .accordion:hover {
   background-color: var(--second-color);
   border-radius: 10px;
 }
 .icon-accordion {
-  color: var(--main-color);
-  margin-right: 5px;
+  color: var(--purple--);
+  margin-right: 7px;
 }
 
 .icon-down {
@@ -86,10 +227,10 @@ body {
 .panel p {
   /* text-decoration: none; */
   cursor: pointer;
-  color: var(--main-color);
+  color: var(--font--color);
 }
 .panel p:hover {
-  color: var(--main-color);
+  color: var(--font--color);
 }
 
 /* css part of sidebar end */
@@ -237,142 +378,6 @@ body {
   color: #754d86;
 }
 
-/* chart */
-
-html,
-body {
-  font-family: Consolas, monaco, monospace;
-}
-
-#chart {
-  padding: 20px;
-}
-
-#chart table {
-  text-align: center;
-  width: 100%;
-  height: 320px;
-  margin-left: 20px;
-}
-
-.charttitle {
-  text-align: center;
-  padding-bottom: 15px;
-}
-
-.bars td {
-  vertical-align: bottom;
-}
-
-.bars div:hover {
-  opacity: 0.6;
-}
-
-.legend {
-  vertical-align: bottom;
-  padding-left: 20px;
-  text-align: left;
-}
-
-.legbox {
-  display: block;
-  clear: both;
-}
-
-.xaxisname {
-  margin: 5px;
-  color: #fff;
-  font-size: 77%;
-  padding: 5px;
-  float: left;
-}
-
-/*Flat UI colors*/
-
-.one {
-  background: #c9bbcf;
-}
-
-.two {
-  background: #b4e4ff;
-}
-
-.three {
-  background: #ffadad;
-}
-
-.four {
-  background: #d1aabf;
-}
-
-.five {
-  background: #ffe9ae;
-}
-
-.six {
-  background: #b69ac2;
-}
-
-.seven {
-  background: #e0abd4;
-}
-
-.eight {
-  background: #a0bedb;
-}
-
-.nine {
-  background: #e2a3a3;
-}
-
-.ten {
-  background: #22313f;
-}
-
-.eleven {
-  background: #f1c40f;
-}
-
-.twelve {
-  background: #f39c12;
-}
-
-.thirteen {
-  background: #e67e22;
-}
-
-.fourteen {
-  background: #d35400;
-}
-
-.fifteen {
-  background: #e74c3c;
-}
-
-.sixteen {
-  background: #c0392b;
-}
-
-.seventeen {
-  background: #ecf0f1;
-}
-
-.seventeen.clouds {
-  color: #bdc3c7;
-}
-
-.eighteen {
-  background: #bdc3c7;
-}
-
-.nineteen {
-  background: #95a5a6;
-}
-
-.twenty {
-  background: #7f8c8d;
-}
-
 /*individual menu-page */
 
 .menu-page-header {
@@ -396,13 +401,15 @@ body {
   border-radius: 4px;
 }
 .approve-button {
-  background-color: #a0bedb;
+  background-color: rgb(131, 210, 255);
+  color: #fff;
   padding: 5px 7px;
   border-radius: 4px;
 }
 
 .reject-button {
-  background-color: #dba0a0;
+  background-color: rgb(200, 135, 243);
+  color: #fff;
   padding: 5px 12px;
   border-radius: 4px;
 }
@@ -423,8 +430,17 @@ body {
   /* height: 0 !important; */
 }
 .new-containner .row-1st {
-  background-color: rgb(203, 217, 228);
-  position: fixed;
+  /* background-color: rgb(203, 217, 228); */
+
+  background-image: linear-gradient(
+    to top,
+
+    rgb(255, 255, 255),
+    rgb(187, 218, 236)
+  );
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
 
 /* .new-containner {
@@ -440,6 +456,7 @@ body {
   height: 600px !important;
   overflow: scroll;
   background-color: #fff;
+  border-radius: 10px;
 }
 
 .cross {
